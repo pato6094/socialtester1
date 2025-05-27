@@ -1,0 +1,13 @@
+# Ignore all files in this directory
+*
+
+# Except this .gitignore file itself and subdirectories
+!.gitignore
+!posts/
+!avatars/
+
+# If you want to keep the subdirectories but ignore their content:
+posts/*
+!posts/.gitkeep
+avatars/*
+!avatars/.gitkeep

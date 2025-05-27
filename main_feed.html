@@ -47,237 +47,150 @@
                 />
               </div>
             </label>
-            <button
-              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#f1f2f4] text-[#121416] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
-            >
-              <div class="text-[#121416]" data-icon="MagnifyingGlass" data-size="20px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                  <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
-                </svg>
-              </div>
-            </button>
+            <!-- User Profile Dropdown -->
+            <div class="relative" id="user-profile-dropdown-container">
+                <button id="user-profile-button" class="flex items-center gap-2 focus:outline-none">
+                    <img id="user-avatar-header" src="https://via.placeholder.com/40" alt="User Avatar" class="w-10 h-10 rounded-full">
+                    <span id="user-name-header" class="text-[#121416] text-sm font-medium">User Name</span>
+                    <svg class="w-4 h-4 text-[#6a7581]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="user-profile-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-10 hidden">
+                    <a href="profile_page.html" id="view-profile-link" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</a>
+                    <button id="logout-button-header" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</button>
+                </div>
+            </div>
+            <!-- End User Profile Dropdown -->
           </div>
         </header>
         <div class="gap-1 px-6 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col max-w-[920px] flex-1">
-            <div class="flex justify-stretch">
-              <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-between">
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#5e92c9] text-white text-sm font-bold leading-normal tracking-[0.015em]"
-                >
-                  <span class="truncate">New Post</span>
-                </button>
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-bold leading-normal tracking-[0.015em]"
-                >
-                  <span class="truncate">Create Group</span>
-                </button>
-              </div>
+          <div id="feed-messages" class="fixed top-16 left-1/2 transform -translate-x-1/2 z-50"></div> <!-- Message Area -->
+          <div class="layout-content-container flex flex-col max-w-[600px] flex-1" id="feed-column"> <!-- Changed max-width for feed column -->
+            <!-- New Post Area -->
+            <div class="bg-white shadow-md rounded-lg p-4 mb-6">
+                <textarea id="new-post-content" class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="What's on your mind?"></textarea>
+                <input type="file" id="new-post-image" class="mt-2 text-sm" accept="image/*">
+                <button id="submit-new-post" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-gray-400">Post</button>
             </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2Nw1AtNUEKMKoTGQ7qRffQzTG66GtXd6U4zHegHiT3EWqnvtJVk5eKlqYOyWDpTFlcByfu3O84dov0Wl9I8W4Pku6DD9fvUIVEvb49VxyE8L9ZPg27mEFsm__kxwFG9uqP6280slz3u0Itm-aOf1eTaZAM-iggOOPwnmDnNQRfP9aOp2x2fGCV9i0A-ZzA_flj3bvP8TfuIftBmZeTjldRNbmhCujW9_UCTF_8vZ6IUvxLCkF-QAgnSROVjVN2zXWZJbi4e52z-E");'
-              ></div>
-              <div class="flex flex-col justify-center">
-                <p class="text-[#121416] text-base font-medium leading-normal line-clamp-1">Sophia Bennett</p>
-                <p class="text-[#6a7581] text-sm font-normal leading-normal line-clamp-2">2h</p>
-              </div>
-            </div>
-            <p class="text-[#121416] text-base font-normal leading-normal pb-3 pt-1 px-4">
-              Just finished a great workout session! Feeling energized and ready to tackle the day. #fitness #healthylifestyle
-            </p>
-            <div class="flex flex-wrap gap-4 px-4 py-2 py-2">
-              <div class="flex items-center justify-center gap-2 px-3 py-2">
-                <div class="text-[#6a7581]" data-icon="Heart" data-size="24px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M178,32c-20.65,0-38.73,8.88-50,23.89C116.73,40.88,98.65,32,78,32A62.07,62.07,0,0,0,16,94c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,220.66,240,164,240,94A62.07,62.07,0,0,0,178,32ZM128,206.8C109.74,196.16,32,147.69,32,94A46.06,46.06,0,0,1,78,48c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,147.61,146.24,196.15,128,206.8Z"
-                    ></path>
-                  </svg>
+            <!-- End New Post Area -->
+            
+            <div id="feed-container">
+                <!-- Posts will be loaded here by JavaScript -->
+                <!-- Example Static Post Structure (to be replaced by JS) -->
+                <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
+                  <div
+                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2Nw1AtNUEKMKoTGQ7qRffQzTG66GtXd6U4zHegHiT3EWqnvtJVk5eKlqYOyWDpTFlcByfu3O84dov0Wl9I8W4Pku6DD9fvUIVEvb49VxyE8L9ZPg27mEFsm__kxwFG9uqP6280slz3u0Itm-aOf1eTaZAM-iggOOPwnmDnNQRfP9aOp2x2fGCV9i0A-ZzA_flj3bvP8TfuIftBmZeTjldRNbmhCujW9_UCTF_8vZ6IUvxLCkF-QAgnSROVjVN2zXWZJbi4e52z-E");'
+                  ></div>
+                  <div class="flex flex-col justify-center">
+                    <p class="text-[#121416] text-base font-medium leading-normal line-clamp-1">Sophia Bennett</p>
+                    <p class="text-[#6a7581] text-sm font-normal leading-normal line-clamp-2">2h</p>
+                  </div>
                 </div>
-                <p class="text-[#6a7581] text-[13px] font-bold leading-normal tracking-[0.015em]">23</p>
-              </div>
-              <div class="flex items-center justify-center gap-2 px-3 py-2">
-                <div class="text-[#6a7581]" data-icon="ChatCircle" data-size="24px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"
-                    ></path>
-                  </svg>
+                <p class="text-[#121416] text-base font-normal leading-normal pb-3 pt-1 px-4">
+                  Just finished a great workout session! Feeling energized and ready to tackle the day. #fitness #healthylifestyle
+                </p>
+                <div class="flex flex-wrap gap-4 px-4 py-2 py-2">
+                  <div class="flex items-center justify-center gap-2 px-3 py-2">
+                    <div class="text-[#6a7581]" data-icon="Heart" data-size="24px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M178,32c-20.65,0-38.73,8.88-50,23.89C116.73,40.88,98.65,32,78,32A62.07,62.07,0,0,0,16,94c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,220.66,240,164,240,94A62.07,62.07,0,0,0,178,32ZM128,206.8C109.74,196.16,32,147.69,32,94A46.06,46.06,0,0,1,78,48c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,147.61,146.24,196.15,128,206.8Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <p class="text-[#6a7581] text-[13px] font-bold leading-normal tracking-[0.015em]">23</p>
+                  </div>
+                  <div class="flex items-center justify-center gap-2 px-3 py-2">
+                    <div class="text-[#6a7581]" data-icon="ChatCircle" data-size="24px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <p class="text-[#6a7581] text-[13px] font-bold leading-normal tracking-[0.015em]">5</p>
+                  </div>
                 </div>
-                <p class="text-[#6a7581] text-[13px] font-bold leading-normal tracking-[0.015em]">5</p>
-              </div>
             </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBmPRl-WtveArIL6Jmt00fi7SNCfCE0cZ01L5H9HgF-NuaOQ5XqG8iAusaibxu_7bDR_arvDlQWXF9FI4xDNuuS3z0H81LII-_OjVbjh4iAol3MjsM7sse8IXVUCSgFXA34Up2J_OK0lOcOvWs20urn6nzAgIvae8YtSge6ioSnsSQoK8HyeaxSM9teYvbJ8UuFB1kYRnOO0fhKwGI4-g8xvgXO5E5F4MI46YOPlN718CDluR9sCLghEeyaeyvIIbf3fenizSdb7UQ");'
-              ></div>
-              <div class="flex flex-col justify-center">
-                <p class="text-[#121416] text-base font-medium leading-normal line-clamp-1">Ethan Carter</p>
-                <p class="text-[#6a7581] text-sm font-normal leading-normal line-clamp-2">4h</p>
-              </div>
-            </div>
-            <p class="text-[#121416] text-base font-normal leading-normal pb-3 pt-1 px-4">
-              Enjoying a quiet evening with a good book. What's everyone reading these days? #reading #booklover
-            </p>
-            <div class="flex flex-wrap gap-4 px-4 py-2 py-2">
-              <div class="flex items-center justify-center gap-2 px-3 py-2">
-                <div class="text-[#6a7581]" data-icon="Heart" data-size="24px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M178,32c-20.65,0-38.73,8.88-50,23.89C116.73,40.88,98.65,32,78,32A62.07,62.07,0,0,0,16,94c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,220.66,240,164,240,94A62.07,62.07,0,0,0,178,32ZM128,206.8C109.74,196.16,32,147.69,32,94A46.06,46.06,0,0,1,78,48c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,147.61,146.24,196.15,128,206.8Z"
-                    ></path>
-                  </svg>
-                </div>
-                <p class="text-[#6a7581] text-[13px] font-bold leading-normal tracking-[0.015em]">18</p>
-              </div>
-              <div class="flex items-center justify-center gap-2 px-3 py-2">
-                <div class="text-[#6a7581]" data-icon="ChatCircle" data-size="24px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"
-                    ></path>
-                  </svg>
-                </div>
-                <p class="text-[#6a7581] text-[13px] font-bold leading-normal tracking-[0.015em]">3</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCdtat4Cvhf8wiKHaXgN1yH7n0pGanqHoBC6j_aCZGhIaPj8i9kNQMQB7DT2d0oGXVn5r4qX35ZbtdB9QcrOIAEK379BENPiMXVKifQ-nKR4C0umkskhgr4gURaLDwdxTUTSitX05nnodjd1ymOgmpIFAiqFy5kmY5u4yfpD9Dwc3Ca9vBeXnq8N-18-p9iEhkmUGxqfMfNiLY1YNvYhC-czVkXhXdpYF4Mw0O1x4WxGPRnqI6ZPJPTQAPcHiE7lww7IjVDd42jBWE");'
-              ></div>
-              <div class="flex flex-col justify-center">
-                <p class="text-[#121416] text-base font-medium leading-normal line-clamp-1">Olivia Foster</p>
-                <p class="text-[#6a7581] text-sm font-normal leading-normal line-clamp-2">6h</p>
-              </div>
-            </div>
-            <p class="text-[#121416] text-base font-normal leading-normal pb-3 pt-1 px-4">
-              Spent the afternoon exploring a new hiking trail. The views were breathtaking! #hiking #nature
-            </p>
-            <div class="flex w-full grow bg-white @container p-4">
-              <div class="w-full gap-1 overflow-hidden bg-white @[480px]:gap-2 aspect-[3/2] rounded-xl flex">
-                <div
-                  class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-none flex-1"
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAiDJINzmnRzISMzzlgUq9i0rnsCwlHRBIwa_BMpGjPjOmHpOAw9rwuFdKxo4A2XpfA1TQfM4w3OyIcjSoQxCjEDjTQYtQoS9ipntucnCtK0nYhO2H0Bxpj8YDEIE6JJQszPTrW24fMWsyBdwzFpkGh-ACP8Mg0J0shoo0JQn3FXE0x42W28yo4lEBrTlQnWuworD4GxQYFjRPZlu4ZPJZEe1F6Ow6LNXSLbrFp9U7g0aLpGdtD25l4YkwiqlFIn0Yq4cvyMpczR4Y");'
-                ></div>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-4 px-4 py-2 py-2">
-              <div class="flex items-center justify-center gap-2 px-3 py-2">
-                <div class="text-[#6a7581]" data-icon="Heart" data-size="24px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M178,32c-20.65,0-38.73,8.88-50,23.89C116.73,40.88,98.65,32,78,32A62.07,62.07,0,0,0,16,94c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,220.66,240,164,240,94A62.07,62.07,0,0,0,178,32ZM128,206.8C109.74,196.16,32,147.69,32,94A46.06,46.06,0,0,1,78,48c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,147.61,146.24,196.15,128,206.8Z"
-                    ></path>
-                  </svg>
-                </div>
-                <p class="text-[#6a7581] text-[13px] font-bold leading-normal tracking-[0.015em]">35</p>
-              </div>
-              <div class="flex items-center justify-center gap-2 px-3 py-2">
-                <div class="text-[#6a7581]" data-icon="ChatCircle" data-size="24px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"
-                    ></path>
-                  </svg>
-                </div>
-                <p class="text-[#6a7581] text-[13px] font-bold leading-normal tracking-[0.015em]">8</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDM61r6nCXYM5UmrCJ7OF68Pu-fqs0jyixxrV_sublYW8kMsXw71Tj0Hql94_YAcUzrMBu6xQ3gmjEHZgSuryuqNOjg6L6XcXDjJLJ3U-_3mBXiCGziXrE-KjEzjw_yAD7B39xf0Iwpl9RhLZI9eldJz-g148uRlCqAmAElfsWw8A9fqKloQD0h00VPpSKEFXL7jKHEyBRbb5pIpUMLQT2b2rEVWcxmKVW4iZuk6I_4QKblDyC2dYd_nhwJhlfxNvuQxop3XanWkmg");'
-              ></div>
-              <div class="flex flex-col justify-center">
-                <p class="text-[#121416] text-base font-medium leading-normal line-clamp-1">Liam Hayes</p>
-                <p class="text-[#6a7581] text-sm font-normal leading-normal line-clamp-2">8h</p>
-              </div>
-            </div>
-            <p class="text-[#121416] text-base font-normal leading-normal pb-3 pt-1 px-4">
-              Just launched my new project! Excited to see where this journey takes me. #entrepreneurship #startuplife
-            </p>
-            <div class="flex flex-wrap gap-4 px-4 py-2 py-2">
-              <div class="flex items-center justify-center gap-2 px-3 py-2">
-                <div class="text-[#6a7581]" data-icon="Heart" data-size="24px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M178,32c-20.65,0-38.73,8.88-50,23.89C116.73,40.88,98.65,32,78,32A62.07,62.07,0,0,0,16,94c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,220.66,240,164,240,94A62.07,62.07,0,0,0,178,32ZM128,206.8C109.74,196.16,32,147.69,32,94A46.06,46.06,0,0,1,78,48c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,147.61,146.24,196.15,128,206.8Z"
-                    ></path>
-                  </svg>
-                </div>
-                <p class="text-[#6a7581] text-[13px] font-bold leading-normal tracking-[0.015em]">42</p>
-              </div>
-              <div class="flex items-center justify-center gap-2 px-3 py-2">
-                <div class="text-[#6a7581]" data-icon="ChatCircle" data-size="24px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"
-                    ></path>
-                  </svg>
-                </div>
-                <p class="text-[#6a7581] text-[13px] font-bold leading-normal tracking-[0.015em]">12</p>
-              </div>
-            </div>
+            <!-- End Example Static Post Structure -->
           </div>
-          <div class="layout-content-container flex flex-col w-[360px]">
-            <h2 class="text-[#121416] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Chats</h2>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCX7sQEessCQ6evBh1sjPx1IaVSTRqb9Khl4ASdK21Zijzb5aOpYjU4P2S0XKuBxFUtTNUKdDZSOEcZWr30eE5_6uv0n6-Q6ieG0aXfsgyIv8LJmX04rXC7bfm_yIORDm5xGnZd9iumouqW3LU0B2uoul0XWGAAZX4_P8GUlvMWngkO5UYjzQOmbL4y9XlrjrWvhj41l37muVX1mHnfW48MhBJL-fg-qrBqmbuAKUm9vPByruQ2VlTx-72DVW5GgGh_qDbJN4BYkHY");'
-              ></div>
-              <div class="flex flex-col justify-center">
-                <p class="text-[#121416] text-base font-medium leading-normal line-clamp-1">Isabella Clark</p>
-                <p class="text-[#6a7581] text-sm font-normal leading-normal line-clamp-2">Online</p>
-              </div>
+          <div class="layout-content-container flex flex-col w-[300px] pl-4"> <!-- Adjusted width and added padding -->
+             <!-- Create Group Button -->
+            <button id="create-group-button" class="w-full mb-4 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">Create Group</button>
+            
+            <h2 class="text-[#121416] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-2">Friends</h2>
+            <div id="friends-list-container" class="space-y-2">
+                <!-- Friends will be loaded here -->
             </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDAGcT19VVFHRBsy5qUSZXkaVkIlotI6SAKPPu_FFizsNCNQY-GP3Nh2J2dy0KRXCYYGB8UjZxHFYTTXYhE4788aeJ6Fm7Zjj5G2dEN-plDxfbiKovDRkKNeBPBX6_JKQaO-YsBKrhdWmNTVTS7IqqdOFPOuilLHh0G_HTYdKjsS5e4G00nMCFuEVJHL6M-ri-JFQaCws3XvkAtop9UgamDFxFiWh72h7VSpZ9THn3wmeSYorCRMT9E9tYF60v6-B5F4NOkZlO8iiI");'
-              ></div>
-              <div class="flex flex-col justify-center">
-                <p class="text-[#121416] text-base font-medium leading-normal line-clamp-1">Lucas Bennett</p>
-                <p class="text-[#6a7581] text-sm font-normal leading-normal line-clamp-2">Online</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB3to-D5y59tqH8evK5ccPRIFmFnjXxnEOKWyjoUx6cUXOBCYoI806ulgmBLXEGrHxkNBp2GNRoXm15P9AlNDsWZ6nuNewQodnguiq71lCY7L0-WLgRu3SiRNfETyV5lvazg7ClWQiht_DOGr9voPOaroV0KYE6JVjIhHGyiYkrFCILr6p_OhWMHxWCoxvujMs77jxtiOEARtSv7JXbFrj8ezPkiCi-PsSWYTIwKsc2wrqOJ0w4xDChsNxCc2qNzZ-hjx7dq3Cds6A");'
-              ></div>
-              <div class="flex flex-col justify-center">
-                <p class="text-[#121416] text-base font-medium leading-normal line-clamp-1">Mia Carter</p>
-                <p class="text-[#6a7581] text-sm font-normal leading-normal line-clamp-2">5m ago</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAq2ZZyeHgDLSjvzXp-s720uUhGayAo3KexpQACFibthZJJMiTlABNgs9xlJ8ywpN1LcK7UAC_M8tcfqPqlyFX-EuBB3l778Bl5pay8JTOC6QnZZ8lRpTJjArZTiZWIac-E9ruP7Eyiwz9GD26MU7DQ4_cT5mgQHCvVgfjPNYOMR86BC1csjwNCZI1LOHNYFgoNKHx6QUKKtJSinQ5IV9jtqdz6bo2VCdG_BXTB0YOkn6iYWIUO4__n8i5BVRJS-LdBH8yNlMM7G3g");'
-              ></div>
-              <div class="flex flex-col justify-center">
-                <p class="text-[#121416] text-base font-medium leading-normal line-clamp-1">Noah Foster</p>
-                <p class="text-[#6a7581] text-sm font-normal leading-normal line-clamp-2">1h ago</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBfP_3_oldnr4mpKiKjGsLWXUB4YZTkq3AOvE2vOFzjBXWQ7ck9MmYv-76N2fJ0jbaBv5nPEL14rpIwC9-sG1iHrLz_ebY9KeMVhct98ORcwL6z2ejo9dyYREyMpcxFwPe8A4DPnuKMQ9nQuTXCGkX_vHfPHcuGUPFCnHhpIjQgPISS_gCT4rEqrNQU4NXFcW3NBBcYgvfkndxBhA_NBCTDSAYfEf8c4VIPzdBn7KrEzUWZ2wnVYi7Rs0ceT60GUi0O0FBxNUMDvco");'
-              ></div>
-              <div class="flex flex-col justify-center">
-                <p class="text-[#121416] text-base font-medium leading-normal line-clamp-1">Ava Hayes</p>
-                <p class="text-[#6a7581] text-sm font-normal leading-normal line-clamp-2">2h ago</p>
-              </div>
+            <h2 class="text-[#121416] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 mt-4">Chats</h2>
+            <div id="chats-container" class="space-y-2">
+                <!-- Chats will be loaded here by JavaScript -->
+                <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
+                  <div
+                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCX7sQEessCQ6evBh1sjPx1IaVSTRqb9Khl4ASdK21Zijzb5aOpYjU4P2S0XKuBxFUtTNUKdDZSOEcZWr30eE5_6uv0n6-Q6ieG0aXfsgyIv8LJmX04rXC7bfm_yIORDm5xGnZd9iumouqW3LU0B2uoul0XWGAAZX4_P8GUlvMWngkO5UYjzQOmbL4y9XlrjrWvhj41l37muVX1mHnfW48MhBJL-fg-qrBqmbuAKUm9vPByruQ2VlTx-72DVW5GgGh_qDbJN4BYkHY");'
+                  ></div>
+                  <div class="flex flex-col justify-center">
+                    <p class="text-[#121416] text-base font-medium leading-normal line-clamp-1">Isabella Clark</p>
+                    <p class="text-[#6a7581] text-sm font-normal leading-normal line-clamp-2">Online</p>
+                  </div>
+                </div>
+                <!-- More static chat examples -->
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- New Post Modal -->
+    <div id="new-post-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-20">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Create New Post</h3>
+                <div class="mt-2 px-7 py-3">
+                    <textarea id="modal-new-post-content" class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="What's on your mind?" rows="4"></textarea>
+                    <input type="file" id="modal-new-post-image" class="mt-2 text-sm w-full" accept="image/*">
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button id="modal-submit-new-post" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Post
+                    </button>
+                    <button id="modal-cancel-new-post" class="mt-2 px-4 py-2 bg-gray-300 text-gray-700 text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Group Modal -->
+    <div id="create-group-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-20">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Create New Group</h3>
+                <div class="mt-2 px-7 py-3 space-y-3">
+                    <input type="text" id="modal-group-name" placeholder="Group Name" class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <textarea id="modal-group-description" class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Group Description" rows="3"></textarea>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button id="modal-submit-create-group" class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        Create Group
+                    </button>
+                    <button id="modal-cancel-create-group" class="mt-2 px-4 py-2 bg-gray-300 text-gray-700 text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Search Results Dropdown/Container -->
+    <div id="search-results-container" class="absolute top-16 left-1/2 transform -translate-x-1/4 w-1/2 md:w-1/3 bg-white shadow-lg rounded-md p-4 z-30 hidden">
+        <!-- Search results will be populated here -->
+    </div>
+
+
+    <script src="static/js/main.js"></script>
+    <script src="static/js/feed.js"></script> <!-- Assuming feed.js for main_feed.html -->
   </body>
 </html>
