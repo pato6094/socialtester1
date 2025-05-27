@@ -1,16 +1,13 @@
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-from .app import db # Import db from app.py
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
+from app import db
 
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     full_name = db.Column(db.String(150), nullable=False)
     email = db.Column(db.String(150), unique=True, nullable=False)
-    password_hash = db.Column(db.String(256), nullable=False) # Increased length for sha256_crypt
+    password_hash = db.Column(db.String(256), nullable=False)
     profile_picture = db.Column(db.String(255), nullable=True)
     bio = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -95,7 +92,7 @@ class Message(db.Model):
     )
 
 class PasswordResetToken(db.Model):
-    __tablename__ = 'password_resets' # Changed from password_reset_tokens to match schema.sql
+    __tablename__ = 'password_resets'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     token = db.Column(db.String(255), unique=True, nullable=False)

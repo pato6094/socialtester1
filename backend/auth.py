@@ -1,8 +1,8 @@
 from datetime import datetime, timedelta
-from flask import current_app # To access app.config for SECRET_KEY
+from flask import current_app, session, g
 from itsdangerous import URLSafeTimedSerializer
 from passlib.hash import sha256_crypt
-from .models import db, User, PasswordResetToken # Import db and models
+from models import db, User, PasswordResetToken
 
 def register_user(full_name, email, password):
     """Registers a new user."""
